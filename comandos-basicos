@@ -1,0 +1,391 @@
+Básicos
+su [usuário] (Permite o usuário mudar sua identidade para outro usuário sem fazer o logout)
+su root (Muda sua identidade para o usuário root do sistema)
+cd <diretório> (Entra em um diretório)
+cd - (Volta ao último diretório)
+cd .. (Volta ao último diretório)
+cd~ (Volta a pasta do usuário)
+cd ../.. (Volta 2 pastas)
+---
+clear (limpa o terminal)
+pwd (Mostra o diretório atual)
+---
+ls (Lista diretórios e arquivos dentro do diretório atual)
+ls .. (Lista o conteúdo do diretório anterior ao atual)
+ls diretoriodesejado (Lista o conteúdo do dir. desejado independentemente se é ou não o atual)
+ls --color (Lista diretórios em cor destacante e arquivos na cor normal dentro do diretório atual)
+
+ls -l (Lista diretórios com detalhes de tamanho e data de criação). Hifen (-) na frente significa que é arquivo, sem hífen (-) significa que é diretório.
+
+ls -lt (Lista diretórios e conta quantos arquivos tem.
+ls -a (lista arquivo oculto) 
+ls -la (lista arquivos ocultos + opção em lista)
+ls --color | sort (Pipe | alinha o comando --color ao sort (junção))
+ls ???? (lista arquivos com 4 caracteres, ? = 1 caracter)
+ls [os] (lista arquivos que contenham a letra o seguida da letra s em qualquer parte do nome)
+dir (Lista os diretórios dentro do diretório atual)
+
+echo * (Mostra todos os arquivos de uma pasta com o comando echo)
+---
+mkdir (cria diretórios)
+rmdir (remove diretórios vazios)
+rm -rf  (remove diretórios não vazios)
+mv [opções] [origem] [destino] (Move arquivos e diretórios de local)
+mv [nomearquivovelho.extensão] [nomearquivonovo.estensão] (Renomear arquivos)
+rm  (Apaga arquivos)
+---
+file <arquivo> (Indica o tipo do arquivo) 
+---
+cp [opções] [origem] [destino] (Copia arquivos) 
+cp ../nomedoarquivo . (Copia um arquivo do diretório anterior ao diretorio atual)
+cp -r nomedapasta [destino]
+date (Exibe a data do sistema)
+cal (Exibe um calendário) 
+
+expr 505 + 35 + ... (Calculadora no terminal)
+---
+cat <arquivo> (Mostra o conteúdo de um arquivo binário ou texto)
+cat -n <arquivo> (Opção -n mostra o número de linhas do arquivo)
+tail -numerodelinhas <arquivo>  (Mostra o conteúdo de um arquivo na qtd. de linhas especificada)
+more <arquivo>  (lê um arquivo de texto)
+less <arquivo>  (lê um arquivo de texto)
+grep <trecho> [arquivo] (procura trechos de texto em arquivos (ou na entrada de teclado/pipe)
+grep <trecho1.trecho2>  ( . = incógnita, poderá ser utilizado mais que uma incógnita) 
+wc -c <arquivo> (Conta a quantidade de carcteres do arquivo)
+wc -w <arquivo> (conta as as palavras do arquivo)
+wc -l <arquivo> (conta as linhas de um arquivo)
+---
+man <comando>  (Ajuda/Manual)
+info <comando> (Ajuda/Manual)
+which <programa>  (Exibe em que diretório está instalado um programa)
+whoami (Exibe seu nome de usuário)
+last (lista os últimos usuários a se conectarem à maquina em que você está)
+dpkg -l | grep <aplicativo> (Verificar versão do aplicativo está instalado no sistema) ii=instalado
+history (Apresenta um histórico dos comando digitados no terminal)
+nohup <programa> & (chamar a execução de um programa instalado pelo terminal sem deixá-lo dependente)
+xdg-open <arquivo> & (Chama a execução de um arquivo pelo terminal)
+youtube-dl <endereço youtube>
+---
+#Informações sobre o sistema instalado
+cat /etc/*-release
+cat /etc/*-release | grep PRETTY
+PRETTY_NAME="Debian GNU/Linux jessie/sid"
+lsb_release -a (Exibe o nome da distribuição e a versão)
+uname -a (Exibe informações do sistema)
+uname -mrs
+cat /etc/[A-Za-z]*[_-][rv]e[lr]* (Exibe informações detalhadas sobre a distribuição utilizada)
+cat /etc/issue (Exibe a distribuição utilizada)
+cat /proc/version  (Exibe informações do sistema)
+screenfetch (Necessário instalar o pacote screenfetch)
+lscpu
+lspci
+---
+lsusb -v | grep -E 'Bluetooth'
+
+
+---
+
+Intermediários
+#Instalando um arquivo .deb no terminal
+dpkg -i <nome_arquivo.deb> (Instala arquivo.deb no terminal)
+---
+#Outros
+nano /etc/apt/sources.list (editar arquivo que contém os endereços de repositórios)
+apt update (atualizar a lista de repositórios)
+apt-get install deb-multimedia-keyring (Instalar a chave do repositório multimédia)
+dpkg --add-architecture i386 (Adicionar a arquitetura i386 ao seu apt-get)
+du -sh <diretorio> (exibe o tamanho do diretório)
+df -h (exibe o espaço em disco)
+df -h <diretorio> (exibe o espaço em disco de um diretório específico)
+free -m (exibe a memória utilizada/disponível)
+ps aux | grep <aplicação> (Exibe o processo em execução filtrando apenas a aplicação desejada)
+grep -v "^#" <diretorio><arquivo> (mostra todas as linhas que não iniciarem com #)
+find <diretorio> -name \*.pdf -size +1M (Mostra apenas os arquivos .pdf com tamanho maior que 1MB)
+find . -name '*.odt' -cmin -10-print0 | xargs -0 cp -ft ~/backup (faz uma cópia de arquivo com os parâmetros mencionados (.odt criado nos últimos 10 minutos)
+ls /etc/ | grep log (Lista apenas os itens que contenham a palavra log)
+ls /etc/ | -n grep log (-n informa em qual linha foi localizado)
+ls | grep -E "(^a|^b)" /etc/group --color (Retorna apenas as linhas que iniciam com a ou b no arquivo /etc/group)
+ls | egrep "(^a|^b)" /etc/group --color (idem mas usando o comando egrep)
+x
+x
+x
+x
+
+#Componentes dos repositórios: 
+Main - Programas suportados oficialmente. 
+Universe - Programas mantidos pela comunidade, mas não são oficiais dos desenvolvedores do Ubuntu.
+Restricted - Programas que não são de código completamente abertos.
+Multiverse - Programas de código fechado.
+Proposed - Atualizações de pré-lançamento.
+Backports - Programas super atualizados, mas na grande maioria são instáveis.
+---
+#Uma boa source.list (Jessie):
+deb http://ftp.br.debian.org/debian jessie main contrib non-free
+deb-src http://ftp.br.debian.org/debian jessie main contrib non-free 
+
+deb http://ftp.br.debian.org/debian jessie-updates main contrib non-free 
+deb-src http://ftp.br.debian.org/debian jessie-updates main contrib non-free 
+
+deb http://security.debian.org/ jessie/updates main contrib non-free 
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
+
+deb http://http.debian.net/debian jessie-backports main contrib  
+deb ftp://ftp.deb-multimedia.org jessie main non-free
+---
+#Uma boa source.list (Streech)
+deb http://ftp.us.debian.org/debian/ testing main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
+
+deb http://security.debian.org/ testing/updates main contrib non-free
+deb-src http://security.debian.org/ testing/updates main contrib non-free
+
+deb http://ftp.us.debian.org/debian/ testing-updates main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ testing-updates main contrib non-free
+
+##Debian Unstable
+deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
+
+##Debian Experimental
+deb http://ftp.us.debian.org/debian/ experimental main contrib non-free
+
+#Codecs de áudio e vídeo
+apt-get install libdvdcss2 w32codecs gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly gstreamer0.10-plugins-bad gstreamer0.10-fluendo-mp3 ffmpeg sox twolame vorbis-tools lame faad mencoder soundconverter winff flashplugin-nonfree
+---
+#Verificando, atualizando e instalando pacotes
+apt-cache search <nome> (Procurar por pacotes via terminal)
+apt-get install  <nome> (Instalar pacote)
+apt full-upgrade (Atualizar distribuição)
+sudo apt dist-upgrade (Atualizar distribuição)
+apt-get -f install (Corrigir dependências)
+---
+#Verificando e instalando firmwares de periféricos instalados
+lspci (verificar os periféricos pci conectados ao sistema)
+lsusb (verificar os periféricos usb conectados ao sistema)
+apt install firmware-<fabricante> (instalar o firmware de uma placa) 
+---
+#Montando e administrando partições
+mount [dispositivo] [ponto de montagem] [opções] (Montar partições)
+***Montado a segunda PARTIÇÃO com o comando: mount -t ext4  /dev/sda6  /media/kubuntu
+df (Mostra o espaço livre/ocupado de cada partição)
+df -h (verifica partições montadas no momento e seu uso de espaço em disco do sistema)
+blkid (Verifica se as partições existentes estão formatadas e retorna em qual tipo de arquivo estão)
+fdisk -l (Verifica partições e sistemas de arquivos
+---
+#Desligando e reiniciando o sistema
+shutdown -r now (reiniciar o computador imediatamente)
+reboot (reiniciar o computador)
+shutdown -h now (desligar o computador imediatamente)
+shutdown -c (Cancela a execução do shutdown)
+---
+#Checando e encerrando processos/aplicativos pelo terminal
+top (lista os processos ativos na máquina, 'PID') k=mata o processo (=PID)
+kill <PID> (encerra processos ativos na máquina)
+kill (-9) <PID> (encerra processos ativos na máquina com força bruta)
+---
+#Compactar e descompactar ZIP (Necessário instalar o pacote zip)
+zip -r compactada.zip pasta/ (compactar)
+unzip  compactada.zip (descompactar)
+unzip compactada.zip -d caminho/ (Desc. p/ pasta)
+unzip -l compactada.zip (listar)
+zip compactada.zip pasta/arquivo-{1,2,3}.txt (comp. separadamente)
+zip -P senha -r compactada.zip pasta/ (compactar c/ senha)
+unzip '*.zip' (descompactar em massa)
+mv *.ttf ~/.fonts
+---
+#Compactar e descompactar TAR
+tar -zcvf compactada.tar.gz pasta/ (Compactar)
+tar -zxvf compactada.tar.gz (Descompactar)
+tar -ztvf compactada.tar.gz (Listar)
+tar -zcvf compactada.tar.gz pasta/arquivos-{1,2}.txt outra-coisa/ (comp. separadamente)
+tar -zxvf compactada.tar.gz -C caminho/da/pasta/ (Desc. p/ pasta)
+tar -jxvf nomedoarquivo.tar.bz2 (Desc. p/ pasta)
+---
+#Compactar e descompactar RAR (Necessário instalar o pacote rar unrar)
+rar a compactada.rar pasta/ (compactar)
+unrar x compactada.rar (descompactar)
+unrar x compactada.rar caminho/ (Desc. p/ pasta)
+unrar l compactada.rar (listar)
+rar a compactada.rar pasta/arquivo-{1,2,3}.txt (comp. separadamente)
+rar a compactada.rar pasta/ -p (compactar c/ senha
+---
+#Comandos de REDE
+ifconfig (Chegar informações sobre as placas de rede instaladas no sistema)
+ifconfig <placa> up (Habilitar uma placa de rede com ou sem fio)
+ifconfig <placa> down (Desabilitar uma placa de rede com ou sem fio)
+ping <endereço> (Solicitar pedido de resposta a um endereço ou máquina na rede)
+---
+echo $? (Retorna o código, entre 0 e 255, de status de saída de um comando)
+0 = Comando completado com sucesso
+1 = Erro geral desconhecido
+126 = O comando não pode ser executado (permissão)
+127 = Comando não encontrado
+130 = Comando finalizado com Ctrl+C
+exit <valor de 0 a 255> (especificar um status de saída quando um comando for finalizado)
+---
+fsck (Equivalente ao chkdsk do dos)
+free  (Mostra detalhes sobre a utilização da memória RAM do sistema)
+uptime  (Mostra o tempo de execução do sistema desde que o computador foi ligado)
+
+#Nano
+ctrl + K --> recorta (ctrl + x) uma linha
+crl + 6 --> marcar texto
+ctrl + u --> colar
+
+Alt / = Desloca o cursor para o final do documento
+Alt \ = Desloca o cursor para o início do documento
+
+Home = Ir para o inicio da linha
+End = Ir para o final da linha
+
+Ctrl + v = equivale a PageDown
+Ctrl + y = equivale a PageUp
+
+Ctrl + c = Mostra a posição atual do cursor em relação à linha do documento
+nano -c <arquivo> = Mostrar a posição do cursor o tempo todo ao abrir o arquivo
+
+Ctrl + W = Procurar texto
+
+
+Avançados
+
+---
+#Visualizando, habilitando e desabilitando scripts que inicializam junto com o sistema
+ls /etc/init.d/ (Visualizar a lista de scripts)
+systemctl is-enabled <nome do script>; echo $? (Checar se o script está ou não sendo carregado)
+systemctl disable <nome do script> (Desabilitar o script)
+sudo systemctl enable <nome do script> (Habilitar o script)
+---
+#Configurando o leitor de emails mutt
+nano ~/.muttrc (Arquivo de configuração do mutt)
+---
+#Visualizando os serviços ativos e configurando a inicialização do sistema
+systemd-analyze blame (verificar os serviços iniciados com o sistema)
+systemctl stop <serviço> (Parar o serviço)
+systemctl disable <serviço> (Desativar a inicialização do serviço durante o boot)
+systemctl enable <serviço> (Habilitar o serviço )
+systemctl start <serviço> (Ativar novamente o serviço)
+systemctl daemon-reload (Recarregar os serviços com a nova alteração)
+---
+#Informações sobre o hardware
+
+ (Verificar informações completas do processador)
+dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 (Verificar modelo da placa mãe)
+cat /proc/cpuinfo | grep 'model name' | uniq (Verificar modelo do processador)
+lscpu | grep -i mhz (Verificar frequencia do processador)
+dmidecode -t baseboard (Verificar informações sobre  BIOS)
+free (Verificar memória)
+cat /proc/meminfo (Verificar memória)
+dmidecode -t 16 (Informações complets sobre a memória)
+lsusb (USB)
+lspci | grep -i audio (Áudio)
+cat /proc/asound/cards (Exibir dispositivos de áudio disponíveis)
+lspci | grep VGA (Vídeo)
+lspci | grep Network (Placa de rede)
+dmesg | grep eth (Exibe placa de rede do sistema)
+dmesg | grep wlan0 (Exibe placa de rede do sistema)
+lspci (Exibe informações sobre os dispositivos PCI)
+lsscsi (Lista todos os dispositivos SCSI / SATA, como discos rígidos e drives ópticos.)
+lsblk (Exibe informações sobre dispositivos sata)
+---
+#Informações sobre o hardware 
+mkdir /home/publico
+chmod 777 /home/publico
+apt-get install samba
+nano /etc/samba/smb.conf
+No final do arquivo, adicione o seguinte bloco de texto:
+[publico]
+path = /home/publico
+public = yes
+writable = yes
+comment = smb share
+printable = no
+guest ok = yes
+Salve e feche.
+Reinicie o serviço do Samba:
+  /etc/init.d/samba restart
+Agora, em uma máquina Windows ou linux, abra o gerenciador de arquivos e digite no endereço:
+\\seu-ip\
+---
+#Configurar teclado ABNT2
+setxkbmap -model pc105 -layout br -variant abnt2
+
+#Comando absoletos
+
+#Problema de chave pública no skype
+#From: https://repo.skype.com/
+dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y" 
+curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add - 
+echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list 
+sudo apt-get update
+
+----
+Resolvendo problema do flashplayer no navegador 
+
+    Download the latest release of the plugin in tar.gz format from https://get.adobe.com/flashplayer/
+
+    As root, extract the tar.gz package and copy libflashplayer.so to /usr/lib/flashplugin-nonfree
+    Give the file sane permission/ownership values:
+
+      chmod 644 /usr/lib/flashplugin-nonfree/libflashplayer.so
+      chown root:root /usr/lib/flashplugin-nonfree/libflashplayer.so
+
+Resolvendo problema do ranger para escolher com qual programa abrir automaticamente
+
+Copie os arquivos para o diretório ~/.config/ranger com o comando: ranger --copy-config=al
+
+Edite o arquivo: rifle.conf
+
+Adicione uma linha com o programa por primeiro da lista.
+
+
+#Empacotamento debian
+
+debootstrap sid <diretorio> http://ftp.br.debian.org/debian --> Instalar distribuição dentro de outra distribuição, neste caso, o SID para enjaular.
+
+chroot /<diretorio> (mudar a raiz do sistema para a pasta instalada o debian SID --> "Enjaular")
+
+#Módulos
+
+depmod
+depmod --al --verbose (cria mapa de módulos)
+
+insmod <modulo> (adiciona um novo módulo à lista de carregamentos do kernel)
+rmmod <modulo> (remove um módulo da lista de carregamentos do kernel)
+
+lsmod (lista os módulos carregados pelo kernel)
+
+Modpro
+modpro <modulo> (adiciona um novo módulo à lista de carregamentos do kernel)
+modprob -r <modulo> (removo um módulo da lista de carregametnos do kernel)
+modprob --show-depends <modulo> (mostra as dependências de um módulo em relação à outros módulos)
+
+
+#Inicialização do sistema
+
+No diretório /etc/ existe os diretório /etc/rc0.d até /etc/rc6.d + rcS.d.
+--> Estes scripts representam os runlevels do sistema.
+     --> Ex: O runlevel 0 é o runlevel que leva o sistema ao desligamento
+                  O runlevel 6 é o runlevel que leva o sistema ao reiniciamento, etc.
+--> Estes diretórios abrigam os links que levam ao scripts dos runlevels. Isso facilita a administração do sistema. Os scripts verdadeiros estão abrigados no diretório /etc/init.d/
+
+Nomenclatura dos links contidos nos diretórios rc*
+     -> A letral K significa K (kill) ou finalizar. Serviços que não deversão rodar no runlevel; Ou seja, estes terão de ser executados primeiro para este runlevel continuar.
+     -> A letra S significa Start (iniciar), ou seja, que devem rodar neste runlevel.
+     -> As letras NM significa o número de sequência, a ordem de execução dos scripts.
+     -> Identificação básica dos scripts.
+
+
+-------------
+
+
+Matérias e links
+-------------
+
+https://www.termbox.io - Emulador de um terminal linux na web
+Saiba como compilar e instalar programas Linux distribuídos diretamente pelo código-fonte [tar.gz]
+http://www.linuxdescomplicado.com.br/2016/08/saiba-como-compilar-e-instalar-programas-linux-distribuidos-diretamente-pelo-codigo-fonte-tar-gz.html
+---
+
+http://terminalroot.com.br/
+
+---
