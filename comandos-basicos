@@ -359,6 +359,11 @@ modpro <modulo> (adiciona um novo módulo à lista de carregamentos do kernel)
 modprob -r <modulo> (removo um módulo da lista de carregametnos do kernel)
 modprob --show-depends <modulo> (mostra as dependências de um módulo em relação à outros módulos)
 
+#### Qt
+Problema com o QT library no debian 10
+apt install qt5-default
+
+###
 
 #Inicialização do sistema
 
