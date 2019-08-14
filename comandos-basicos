@@ -321,7 +321,7 @@ sudo apt-get update
 ----
 Resolvendo problema do flashplayer no navegador 
 
-    Download the latest release of the plugin in tar.gz format from https://get.adobe.com/flashplayer/
+    Downloservice bluetooth startad the latest release of the plugin in tar.gz format from https://get.adobe.com/flashplayer/
 
     As root, extract the tar.gz package and copy libflashplayer.so to /usr/lib/flashplugin-nonfree
     Give the file sane permission/ownership values:
@@ -362,6 +362,17 @@ modprob --show-depends <modulo> (mostra as dependências de um módulo em relaç
 #### Qt
 Problema com o QT library no debian 10
 apt install qt5-default
+
+###
+Bluetoothctl
+
+apt install bluetooth bluez bluez-tools rfkill
+apt install rfkill list
+rfkill unblock bluetooth
+systemctl start bluetooth
+apt install blueman
+
+bluetoothctl
 
 ###
 
