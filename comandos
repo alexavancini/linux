@@ -84,16 +84,18 @@ lsusb -v | grep -E 'Bluetooth'
 
 
 ---
-
-Intermediários
 #Instalando um arquivo .deb no terminal
 dpkg -i <nome_arquivo.deb> (Instala arquivo.deb no terminal)
 ---
 #Outros
 nano /etc/apt/sources.list (editar arquivo que contém os endereços de repositórios)
+
 apt update (atualizar a lista de repositórios)
+
 apt-get install deb-multimedia-keyring (Instalar a chave do repositório multimédia)
+
 dpkg --add-architecture i386 (Adicionar a arquitetura i386 ao seu apt-get)
+
 du -sh <diretorio> (exibe o tamanho do diretório)
 df -h (exibe o espaço em disco)
 df -h <diretorio> (exibe o espaço em disco de um diretório específico)
