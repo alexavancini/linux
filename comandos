@@ -410,6 +410,9 @@ reboot
 ####problema com o bar  instalar:
 apt install i3status
 
+####dmenu não vem instalado
+apt install dmenu
+
 reboot
 
 
