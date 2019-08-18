@@ -226,3 +226,19 @@ Site: https://github.com/polybar/polybar
 ###Alterar o nome de usuário
 Logar como root e:
 usermod -l <nomenovo> <nomeantigo>
+
+###Instalar tor-brownser
+
+Download do pacote tar
+https://www.torproject.org/
+
+descompactar
+$tar -xJf <nome do pacote>
+
+Alterar a permissão de execução
+cd <nome da pasta descompactada>
+$chmod +x start-tor-browser.desktop
+
+Conect
+
+###
