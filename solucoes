@@ -242,3 +242,20 @@ $chmod +x start-tor-browser.desktop
 Conect
 
 ###
+
+Montar a segunda partição do HD
+
+#Visualizar as partições:
+fdisk -l
+
+#criar pasta com o nome da partição no diretório desejado
+mkdir ubuntu 
+
+#montar a partição
+mount -t ext4 /dev/sda6 /mnt/ubuntu
+
+#Montar automaticamente (Não testei ainda)
+nano /etc/ fstab
+
+Adicionar:
+/dev/sda1 /mnt/ubuntu ext4 defaults 0 0
