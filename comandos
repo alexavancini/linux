@@ -248,3 +248,9 @@ nano -c <arquivo> = Mostrar a posição do cursor o tempo todo ao abrir o arquiv
 Ctrl + W = Procurar texto
 
 -------------
+Logs
+
+/var/log
+
+-------------
+
