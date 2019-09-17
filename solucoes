@@ -1,16 +1,13 @@
-Avançados
-
----
-#Visualizando, habilitando e desabilitando scripts que inicializam junto com o sistema
+###Visualizando, habilitando e desabilitando scripts que inicializam junto com o sistema
 ls /etc/init.d/ (Visualizar a lista de scripts)
 systemctl is-enabled <nome do script>; echo $? (Checar se o script está ou não sendo carregado)
 systemctl disable <nome do script> (Desabilitar o script)
 sudo systemctl enable <nome do script> (Habilitar o script)
 ---
-#Configurando o leitor de emails mutt
+###Configurando o leitor de emails mutt
 nano ~/.muttrc (Arquivo de configuração do mutt)
 ---
-#Visualizando os serviços ativos e configurando a inicialização do sistema
+###Visualizando os serviços ativos e configurando a inicialização do sistema
 systemd-analyze blame (verificar os serviços iniciados com o sistema)
 systemctl stop <serviço> (Parar o serviço)
 systemctl disable <serviço> (Desativar a inicialização do serviço durante o boot)
@@ -18,7 +15,7 @@ systemctl enable <serviço> (Habilitar o serviço )
 systemctl start <serviço> (Ativar novamente o serviço)
 systemctl daemon-reload (Recarregar os serviços com a nova alteração)
 ---
-#Informações sobre o hardware
+###nformações sobre o hardware
 
  (Verificar informações completas do processador)
 dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 (Verificar modelo da placa mãe)
@@ -39,7 +36,7 @@ lspci (Exibe informações sobre os dispositivos PCI)
 lsscsi (Lista todos os dispositivos SCSI / SATA, como discos rígidos e drives ópticos.)
 lsblk (Exibe informações sobre dispositivos sata)
 ---
-#Informações sobre o hardware 
+###Informações sobre o hardware 
 mkdir /home/publico
 chmod 777 /home/publico
 apt-get install samba
@@ -58,20 +55,18 @@ Reinicie o serviço do Samba:
 Agora, em uma máquina Windows ou linux, abra o gerenciador de arquivos e digite no endereço:
 \\seu-ip\
 ---
-#Configurar teclado ABNT2
+###Configurar teclado ABNT2
 setxkbmap -model pc105 -layout br -variant abnt2
 
-#Comando absoletos
-
-#Problema de chave pública no skype
+###Problema de chave pública no skype
 #From: https://repo.skype.com/
 dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y" 
 curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add - 
 echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list 
 sudo apt-get update
-
 ----
-Resolvendo problema do flashplayer no navegador 
+
+###Resolvendo problema do flashplayer no navegador 
 
     Downloservice bluetooth startad the latest release of the plugin in tar.gz format from https://get.adobe.com/flashplayer/
 
@@ -89,8 +84,8 @@ Edite o arquivo: rifle.conf
 
 Adicione uma linha com o programa por primeiro da lista.
 
-
-#Empacotamento debian
+---
+###Empacotamento debian
 
 debootstrap sid <diretorio> http://ftp.br.debian.org/debian --> Instalar distribuição dentro de outra distribuição, neste caso, o SID para enjaular.
 
@@ -110,8 +105,9 @@ Modpro
 modpro <modulo> (adiciona um novo módulo à lista de carregamentos do kernel)
 modprob -r <modulo> (removo um módulo da lista de carregametnos do kernel)
 modprob --show-depends <modulo> (mostra as dependências de um módulo em relação à outros módulos)
+---
 
-#####Inicialização do sistema
+###Inicialização do sistema
 
 No diretório /etc/ existe os diretório /etc/rc0.d até /etc/rc6.d + rcS.d.
 --> Estes scripts representam os runlevels do sistema.
@@ -125,11 +121,11 @@ Nomenclatura dos links contidos nos diretórios rc*
      -> As letras NM significa o número de sequência, a ordem de execução dos scripts.
      -> Identificação básica dos scripts.
      
-   
-#### Qt
+  ---
+###Qt
 Problema com o QT library no debian 10
 apt install qt5-default
-
+---
 ###Bluetoothctl
 
 apt install bluetooth bluez bluez-tools rfkill
@@ -139,10 +135,9 @@ systemctl start bluetooth
 apt install blueman
 
 bluetoothctl
+---
 
-###
-
-i3-wm e i3-gaps
+###i3-wm e i3-gaps
 
 #i3
 apt install i3-wm
@@ -181,7 +176,7 @@ apt install i3status
 apt install dmenu
 
 reboot
-
+---
 ### Polybar
 
 # apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev 
@@ -221,12 +216,12 @@ Salvar e sair (Ctrl+O e Ctrl+x)
 reboot
 
 Site: https://github.com/polybar/polybar
-
+---
 
 ###Alterar o nome de usuário
 Logar como root e:
 usermod -l <nomenovo> <nomeantigo>
-
+---
 ###Instalar tor-brownser
 
 Download do pacote tar
@@ -240,22 +235,33 @@ cd <nome da pasta descompactada>
 $chmod +x start-tor-browser.desktop
 
 Conect
-
-###
-
-Montar a segunda partição do HD
+---
+###Montar a segunda partição do HD
 
 #Visualizar as partições:
 fdisk -l
 
 #criar pasta com o nome da partição no diretório desejado
-mkdir ubuntu 
+mkdir /mnt/ubuntu 
 
 #montar a partição
 mount -t ext4 /dev/sda6 /mnt/ubuntu
 
-#Montar automaticamente (Não testei ainda)
+#Montar automaticamente
 nano /etc/ fstab
 
 Adicionar:
 /dev/sda1 /mnt/ubuntu ext4 defaults 0 0
+---
+
+###Montar um pendrive
+
+#Verificando em qual porta o pendrive foi inserido
+fdisk -l
+
+#Montando
+mkdir /media/pendrive
+mount /dev/sdb1 /media/pendrive
+---
+
+###
