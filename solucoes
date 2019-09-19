@@ -233,6 +233,7 @@ $tar -xJf <nome do pacote>
 Alterar a permissão de execução
 cd <nome da pasta descompactada>
 $chmod +x start-tor-browser.desktop
+./start-tor-browser.desktop
 
 Conect
 ---
