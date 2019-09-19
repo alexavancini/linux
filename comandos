@@ -253,4 +253,9 @@ Logs
 /var/log
 
 -------------
+Visualizar IP
 
+Interno: ip a | grep inet
+externo: curl ifconfig.me
+*ter instalado o pacote curl.
+-------------
