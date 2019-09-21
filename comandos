@@ -66,9 +66,12 @@ nohup <programa> & (chamar a execução de um programa instalado pelo terminal s
 xdg-open <arquivo> & (Chama a execução de um arquivo pelo terminal)
 youtube-dl <endereço youtube>
 ---
-#Informações sobre o sistema instalado
+#Informações sobre o sistema instalado -- VERSÃO--
 cat /etc/*-release
 cat /etc/*-release | grep PRETTY
+
+**** cat /etc/debian_version ****
+
 PRETTY_NAME="Debian GNU/Linux jessie/sid"
 lsb_release -a (Exibe o nome da distribuição e a versão)
 uname -a (Exibe informações do sistema)
@@ -81,7 +84,6 @@ lscpu
 lspci
 ---
 lsusb -v | grep -E 'Bluetooth'
-
 
 ---
 #Instalando um arquivo .deb no terminal
