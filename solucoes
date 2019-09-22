@@ -265,4 +265,14 @@ mkdir /media/pendrive
 mount /dev/sdb1 /media/pendrive
 ---
 
+### RANGER
+##Habilitar visualização de imagens
+#Se certificar que o pacote w3m-img está instalado
+apt install w3m-img
+#Editar o arquivo de configurações
+~/.config/ranger/rc.conf
+#Editar a linha:
+set preview_images true (Já vai existir e vai estar false
+
+
 ###
