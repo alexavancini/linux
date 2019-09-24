@@ -282,6 +282,8 @@ apt install jmtpfs
 mkdir -p /mnt/android
 chown $USER:$USER /mnt/android
 jmtpfs /mnt/android
+#Desmonstar antes de montar novamente se não apresentará erro input/output
+fusermount -u /mnt/android
 
 ###
 
