@@ -277,4 +277,12 @@ apt install w3m-img
 set preview_images true (Já vai existir e vai estar false)
 #reiniciar o ranger
 
+### Acessar celular android pelo terminal
+apt install jmtpfs
+mkdir -p /mnt/android
+chown $USER:$USER /mnt/android
+jmtpfs /mnt/android
+
 ###
+
+
