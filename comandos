@@ -1,38 +1,53 @@
-Básicos
 su [usuário] (Permite o usuário mudar sua identidade para outro usuário sem fazer o logout)
 su root (Muda sua identidade para o usuário root do sistema)
 cd <diretório> (Entra em um diretório)
-cd - (Volta ao último diretório)
+cd - (Volta ao último diretório visitado anteriormente)
 cd .. (Volta ao último diretório)
 cd~ (Volta a pasta do usuário)
-cd ../.. (Volta 2 pastas)
+cd ../.. (Volta 2 diretórios)
+cd ../../.. (Volta 3 diretórios)
+cd ../<diretorio> (Lista o diretório informado a um diretório anterior ao atual)
 ---
 clear (limpa o terminal)
 pwd (Mostra o diretório atual)
 ---
 ls (Lista diretórios e arquivos dentro do diretório atual)
 ls .. (Lista o conteúdo do diretório anterior ao atual)
-ls diretoriodesejado (Lista o conteúdo do dir. desejado independentemente se é ou não o atual)
+ls <diretorio> (Lista os diretórios dentro informado sem entrar neste diretório. Se realizaod dentro de um diretório)
+dir <diretorio> (Lista os diretórios dentro informado sem entrar neste diretório. Se realizaod dentro de um diretório equivale a um ls)
+ls ../<diretorio> (Lista o diretório que está anterior ao diretório atual
 ls --color (Lista diretórios em cor destacante e arquivos na cor normal dentro do diretório atual)
 
-ls -l (Lista diretórios com detalhes de tamanho e data de criação). Hifen (-) na frente significa que é arquivo, sem hífen (-) significa que é diretório.
+ls -a (Lista os diretórios ocultos)
+ls --group-directories-first (Mostra agrupado primeiro os diretrios depois os arquivos)
+ls -p (Mostra o conteúdo do diretório atual indicando o que um diretório com uma barra no final /)
+ls -r (Mostra em ordem reversa dos nomes)
+ls -R (Mostra o conteúdo do diretrio recursivamente)
+ls -S (Mostra de acordo com o tamanho dos arquivos e pastas. Os maiores primeiro)
+ls -X (Mostra de acordo com a letra das extenções dos arquivos. Se houver pastas, pastas primeiro que arquivos)
+ls -1 (Mostra um arquivo ou pasta por linha e não em colunas)
 
-ls -lt (Lista diretórios e conta quantos arquivos tem.
-ls -a (lista arquivo oculto) 
-ls -la (lista arquivos ocultos + opção em lista)
+ls -l (Lista diretórios com detalhes de tamanho e data de criação e conta a quantidade de arquivos). Hifen (-) na frente significa que é arquivo, sem hífen (-) significa que é diretório.
+
 ls --color | sort (Pipe | alinha o comando --color ao sort (junção))
 ls ???? (lista arquivos com 4 caracteres, ? = 1 caracter)
 ls [os] (lista arquivos que contenham a letra o seguida da letra s em qualquer parte do nome)
-dir (Lista os diretórios dentro do diretório atual)
+
+ls a* (Lista os arquivos que começam com a letra a)
+ls ab* (lista os arquivos que começam com ab)
 
 echo * (Mostra todos os arquivos de uma pasta com o comando echo)
 ---
+
 mkdir (cria diretórios)
 rmdir (remove diretórios vazios)
+
 rm -rf  (remove diretórios não vazios)
-mv [opções] [origem] [destino] (Move arquivos e diretórios de local)
-mv [nomearquivovelho.extensão] [nomearquivonovo.estensão] (Renomear arquivos)
 rm  (Apaga arquivos)
+
+mv [opções] [origem] [destino] (Move arquivos e diretórios de um local para outro)
+mv [nomearquivovelho.extensão] [nomearquivonovo.estensão] (Renomear arquivos)
+
 ---
 file <arquivo> (Indica o tipo do arquivo) 
 ---
