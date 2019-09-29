@@ -261,3 +261,23 @@ Interno: ip a | grep inet
 externo: curl ifconfig.me
 *ter instalado o pacote curl.
 -------------
+APT
+apt update
+apt upgrade
+apt full-upgrade
+apt full-upgrade -y (Não pergunta se Yes ou No)
+
+apt search <pacote>
+apt show <pacote>
+apt install <pacote>
+apt reinstall <pacote
+apt remove <pacote>
+apt purge <pacote>
+apt autoremove
+
+apt list --installed
+apt list --installed > pacotes.txt (Lista todos os pacotes instalados e salva em um arquivo pacotes.txt)
+apt list --intalled | grep <pacote> (Lista apenas os pacotes contendo a palavra chave)
+
+apt list --upgradable
+
