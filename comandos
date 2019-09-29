@@ -297,4 +297,15 @@ apt list --intalled | grep <pacote> (Lista apenas os pacotes contendo a palavra 
 dpkg-query -l | less | grep <pacote> (Lista o pacote instalado com a versão e arquitetura do pacote)
 
 apt list --upgradable
+---
+Youtube-dl - Download de mp3 de vídeos do youtube
+
+Ter instalado o pacote youtube-dl (apt install youtube-dl)
+
+youtube-dl --extract-audio --audio-format mp3 <endereço do vídeo>
+
+---
+
+
+
 
