@@ -277,7 +277,7 @@ apt install w3m-img
 set preview_images true (Já vai existir e vai estar false)
 #reiniciar o ranger
 
-### Acessar celular android pelo terminal
+### Acessar celular android pelo terminal por USB
 apt install jmtpfs
 mkdir -p /mnt/android
 chown $USER:$USER /mnt/android
@@ -286,5 +286,15 @@ jmtpfs /mnt/android
 fusermount -u /mnt/android
 
 ###
+Enviar arquivo para o celular por bluetooth via terminal
 
+#conectar com o dispositivo utilizando o bluetoothctl
+#Ter instalado o pacote obexftp
+apt install obexftp
+
+#Enviar o arquivo
+#Ter o mac address do dispositivo, pode ser adquirido no bluetoothctl com o comando devices
+obexftp -b <MAC_address> -p /home/user/caminho do arquivo
+
+#O arquivo irá para a pasta sdcard do celular
 
