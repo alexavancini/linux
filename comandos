@@ -1,5 +1,4 @@
-su [usuário] (Permite o usuário mudar sua identidade para outro usuário sem fazer o logout)
-su root (Muda sua identidade para o usuário root do sistema)
+#cd
 cd <diretório> (Entra em um diretório)
 cd - (Volta ao último diretório visitado anteriormente)
 cd .. (Volta ao último diretório)
@@ -11,6 +10,7 @@ cd ../<diretorio> (Lista o diretório informado a um diretório anterior ao atua
 clear (limpa o terminal)
 pwd (Mostra o diretório atual)
 ---
+#ls
 ls (Lista diretórios e arquivos dentro do diretório atual)
 ls .. (Lista o conteúdo do diretório anterior ao atual)
 ls <diretorio> (Lista os diretórios dentro informado sem entrar neste diretório. Se realizaod dentro de um diretório)
@@ -38,16 +38,15 @@ ls ab* (lista os arquivos que começam com ab)
 
 echo * (Mostra todos os arquivos de uma pasta com o comando echo)
 ---
-
 mkdir (cria diretórios)
 rmdir (remove diretórios vazios)
 
+rm  <arquivo> (Apaga arquivos)
+rm -r <diregorio>
 rm -rf  (remove diretórios não vazios)
-rm  (Apaga arquivos)
 
 mv [opções] [origem] [destino] (Move arquivos e diretórios de um local para outro)
-mv [nomearquivovelho.extensão] [nomearquivonovo.estensão] (Renomear arquivos)
-
+mv nomeatual nomenovo (Renomear arquivos)
 ---
 file <arquivo> (Indica o tipo do arquivo) 
 ---
@@ -81,6 +80,10 @@ nohup <programa> & (chamar a execução de um programa instalado pelo terminal s
 xdg-open <arquivo> & (Chama a execução de um arquivo pelo terminal)
 youtube-dl <endereço youtube>
 ---
+#su
+su [usuário] (Permite o usuário mudar sua identidade para outro usuário sem fazer o logout)
+su (Muda sua identidade para o usuário root do sistema)
+---
 #Informações sobre o sistema instalado -- VERSÃO--
 cat /etc/*-release
 cat /etc/*-release | grep PRETTY
@@ -95,19 +98,45 @@ cat /etc/[A-Za-z]*[_-][rv]e[lr]* (Exibe informações detalhadas sobre a distrib
 cat /etc/issue (Exibe a distribuição utilizada)
 cat /proc/version  (Exibe informações do sistema)
 screenfetch (Necessário instalar o pacote screenfetch)
+
+#pcu
 lscpu
+#pci
 lspci
----
+#usb
 lsusb -v | grep -E 'Bluetooth'
 
 ---
 #Instalando um arquivo .deb no terminal
 dpkg -i <nome_arquivo.deb> (Instala arquivo.deb no terminal)
 ---
-#Outros
-nano /etc/apt/sources.list (editar arquivo que contém os endereços de repositórios)
+#apt
 
 apt update (atualizar a lista de repositórios)
+apt upgrade
+apt full-upgrade
+apt install <pacote>
+apt install -y <pacote> (Instala sem precisar confirmação)
+apt reinstall <pacote>
+apt purge
+apt autoremove
+apt list --upgradable
+apt list --installed
+apt list --installed grep a*
+apt search <pacote>
+apt show <pacote>
+
+nano /etc/apt/sources.list (editar arquivo que contém os endereços de repositórios)
+
+#Componentes dos repositórios: 
+Main - Programas suportados oficialmente. 
+Universe - Programas mantidos pela comunidade, mas não são oficiais dos desenvolvedores do Ubuntu.
+Restricted - Programas que não são de código completamente abertos.
+Multiverse - Programas de código fechado.
+Proposed - Atualizações de pré-lançamento.
+Backports - Programas super atualizados, mas na grande maioria são instáveis.
+
+#Outros
 
 apt-get install deb-multimedia-keyring (Instalar a chave do repositório multimédia)
 
@@ -117,7 +146,6 @@ du -sh <diretorio> (exibe o tamanho do diretório)
 df -h (exibe o espaço em disco)
 df -h <diretorio> (exibe o espaço em disco de um diretório específico)
 free -m (exibe a memória utilizada/disponível)
-ps aux | grep <aplicação> (Exibe o processo em execução filtrando apenas a aplicação desejada)
 grep -v "^#" <diretorio><arquivo> (mostra todas as linhas que não iniciarem com #)
 find <diretorio> -name \*.pdf -size +1M (Mostra apenas os arquivos .pdf com tamanho maior que 1MB)
 find . -name '*.odt' -cmin -10-print0 | xargs -0 cp -ft ~/backup (faz uma cópia de arquivo com os parâmetros mencionados (.odt criado nos últimos 10 minutos)
@@ -125,57 +153,20 @@ ls /etc/ | grep log (Lista apenas os itens que contenham a palavra log)
 ls /etc/ | -n grep log (-n informa em qual linha foi localizado)
 ls | grep -E "(^a|^b)" /etc/group --color (Retorna apenas as linhas que iniciam com a ou b no arquivo /etc/group)
 ls | egrep "(^a|^b)" /etc/group --color (idem mas usando o comando egrep)
-x
-x
-x
-x
 
-#Componentes dos repositórios: 
-Main - Programas suportados oficialmente. 
-Universe - Programas mantidos pela comunidade, mas não são oficiais dos desenvolvedores do Ubuntu.
-Restricted - Programas que não são de código completamente abertos.
-Multiverse - Programas de código fechado.
-Proposed - Atualizações de pré-lançamento.
-Backports - Programas super atualizados, mas na grande maioria são instáveis.
+#echo
+echo $? (Retorna o código, entre 0 e 255, de status de saída de um comando)
+0 = Comando completado com sucesso
+1 = Erro geral desconhecido
+126 = O comando não pode ser executado (permissão)
+127 = Comando não encontrado
+130 = Comando finalizado com Ctrl+C
+exit <valor de 0 a 255> (especificar um status de saída quando um comando for finalizado)
+
 ---
-#Uma boa source.list (Jessie):
-deb http://ftp.br.debian.org/debian jessie main contrib non-free
-deb-src http://ftp.br.debian.org/debian jessie main contrib non-free 
-
-deb http://ftp.br.debian.org/debian jessie-updates main contrib non-free 
-deb-src http://ftp.br.debian.org/debian jessie-updates main contrib non-free 
-
-deb http://security.debian.org/ jessie/updates main contrib non-free 
-deb-src http://security.debian.org/ jessie/updates main contrib non-free
-
-deb http://http.debian.net/debian jessie-backports main contrib  
-deb ftp://ftp.deb-multimedia.org jessie main non-free
----
-#Uma boa source.list (Streech)
-deb http://ftp.us.debian.org/debian/ testing main contrib non-free
-deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
-
-deb http://security.debian.org/ testing/updates main contrib non-free
-deb-src http://security.debian.org/ testing/updates main contrib non-free
-
-deb http://ftp.us.debian.org/debian/ testing-updates main contrib non-free
-deb-src http://ftp.us.debian.org/debian/ testing-updates main contrib non-free
-
-##Debian Unstable
-deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
-
-##Debian Experimental
-deb http://ftp.us.debian.org/debian/ experimental main contrib non-free
 
 #Codecs de áudio e vídeo
 apt-get install libdvdcss2 w32codecs gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly gstreamer0.10-plugins-bad gstreamer0.10-fluendo-mp3 ffmpeg sox twolame vorbis-tools lame faad mencoder soundconverter winff flashplugin-nonfree
----
-#Verificando, atualizando e instalando pacotes
-apt-cache search <nome> (Procurar por pacotes via terminal)
-apt-get install  <nome> (Instalar pacote)
-apt full-upgrade (Atualizar distribuição)
-sudo apt dist-upgrade (Atualizar distribuição)
-apt-get -f install (Corrigir dependências)
 ---
 #Verificando e instalando firmwares de periféricos instalados
 lspci (verificar os periféricos pci conectados ao sistema)
@@ -200,6 +191,8 @@ shutdown -c (Cancela a execução do shutdown)
 top (lista os processos ativos na máquina, 'PID') k=mata o processo (=PID)
 kill <PID> (encerra processos ativos na máquina)
 kill (-9) <PID> (encerra processos ativos na máquina com força bruta)
+ps aux | grep <aplicação> (Exibe o processo em execução filtrando apenas a aplicação desejada)
+
 ---
 #Compactar e descompactar ZIP (Necessário instalar o pacote zip)
 zip -r compactada.zip pasta/ (compactar)
@@ -209,7 +202,6 @@ unzip -l compactada.zip (listar)
 zip compactada.zip pasta/arquivo-{1,2,3}.txt (comp. separadamente)
 zip -P senha -r compactada.zip pasta/ (compactar c/ senha)
 unzip '*.zip' (descompactar em massa)
-mv *.ttf ~/.fonts
 ---
 #Compactar e descompactar TAR
 tar -zcvf compactada.tar.gz pasta/ (Compactar)
@@ -227,24 +219,20 @@ unrar l compactada.rar (listar)
 rar a compactada.rar pasta/arquivo-{1,2,3}.txt (comp. separadamente)
 rar a compactada.rar pasta/ -p (compactar c/ senha
 ---
-#Comandos de REDE
+#Fonts
+Movendo muitos arquivos de fonto para o diretório .fonts
+mv *.ttf ~/.fonts
+---
+#Comandos de REDE (comandos absoletos)
 ifconfig (Chegar informações sobre as placas de rede instaladas no sistema)
 ifconfig <placa> up (Habilitar uma placa de rede com ou sem fio)
 ifconfig <placa> down (Desabilitar uma placa de rede com ou sem fio)
 ping <endereço> (Solicitar pedido de resposta a um endereço ou máquina na rede)
 ---
-echo $? (Retorna o código, entre 0 e 255, de status de saída de um comando)
-0 = Comando completado com sucesso
-1 = Erro geral desconhecido
-126 = O comando não pode ser executado (permissão)
-127 = Comando não encontrado
-130 = Comando finalizado com Ctrl+C
-exit <valor de 0 a 255> (especificar um status de saída quando um comando for finalizado)
----
 fsck (Equivalente ao chkdsk do dos)
 free  (Mostra detalhes sobre a utilização da memória RAM do sistema)
 uptime  (Mostra o tempo de execução do sistema desde que o computador foi ligado)
-
+---
 #Nano
 ctrl + K --> recorta (ctrl + x) uma linha
 crl + 6 --> marcar texto
@@ -264,19 +252,18 @@ nano -c <arquivo> = Mostrar a posição do cursor o tempo todo ao abrir o arquiv
 
 Ctrl + W = Procurar texto
 
--------------
+---
 Logs
 
 /var/log
-
--------------
-Visualizar IP
+---
+#Visualizar IP
 
 Interno: ip a | grep inet
 externo: curl ifconfig.me
 *ter instalado o pacote curl.
 -------------
-APT
+#APT
 apt update
 apt upgrade
 apt full-upgrade
@@ -293,19 +280,13 @@ apt autoremove
 apt list --installed
 apt list --installed > pacotes.txt (Lista todos os pacotes instalados e salva em um arquivo pacotes.txt)
 apt list --intalled | grep <pacote> (Lista apenas os pacotes contendo a palavra chave)
+apt list --upgradable
 
 dpkg-query -l | less | grep <pacote> (Lista o pacote instalado com a versão e arquitetura do pacote)
 
-apt list --upgradable
 ---
-Youtube-dl - Download de mp3 de vídeos do youtube
-
-Ter instalado o pacote youtube-dl (apt install youtube-dl)
-
+#Youtube-dl - Download de mp3 de vídeos do youtube
+##Ter instalado o pacote youtube-dl (apt install youtube-dl)
 youtube-dl --extract-audio --audio-format mp3 <endereço do vídeo>
-
----
-
-
 
 
