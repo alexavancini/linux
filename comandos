@@ -289,4 +289,11 @@ dpkg-query -l | less | grep <pacote> (Lista o pacote instalado com a versão e a
 ##Ter instalado o pacote youtube-dl (apt install youtube-dl)
 youtube-dl --extract-audio --audio-format mp3 <endereço do vídeo>
 
+---
+Formatando um pendrive
 
+fdisk -l (reconhecer em qual /dev/ foi instalado
+mkfs.vfat /dev/sdbx (onde x é o dev insntalado reconhecido no passo anterior)
+
+
+mkfs.vfat /dev/
