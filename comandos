@@ -78,7 +78,8 @@ dpkg -l | grep <aplicativo> (Verificar versão do aplicativo está instalado no 
 history (Apresenta um histórico dos comando digitados no terminal)
 nohup <programa> & (chamar a execução de um programa instalado pelo terminal sem deixá-lo dependente)
 xdg-open <arquivo> & (Chama a execução de um arquivo pelo terminal)
-youtube-dl <endereço youtube>
+youtube-dl <endereço youtube para vídeo>
+youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --output "%(title)s.%(ext)s" <end para  mp3>
 ---
 #su
 su [usuário] (Permite o usuário mudar sua identidade para outro usuário sem fazer o logout)
