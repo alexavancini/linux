@@ -298,3 +298,11 @@ obexftp -b <MAC_address> -p /home/user/caminho do arquivo
 
 #O arquivo irá para a pasta sdcard do celular
 
+###Problemas no dpkk sbin
+
+dpkg: aviso: 'ldconfig' não foi encontrado em PATH ou não é executável
+dpkg: aviso: 'start-stop-daemon' não foi encontrado em PATH ou não é executável
+dpkg: erro: 2 programas esperados não foram encontrados em PATH ou não são executáveis
+Nota: a PATH do root normalmente deve conter /usr/local/sbin, /usr/sbin e /sbin
+
+Solução: export PATH=$PATH:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
